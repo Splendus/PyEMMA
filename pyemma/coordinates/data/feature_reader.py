@@ -104,7 +104,7 @@ class FeatureReader(DataSource, SerializableMixIn):
         # check we have at least mdtraj-1.6.1 to efficiently seek xtc, trr formats
         if any(file_suffix(f) == '.xtc' or file_suffix(f) == '.trr' for f in trajectories):
             from distutils.version import LooseVersion
-            xtc_trr_random_accessible = True if LooseVersion(mdtraj.version.version) >= LooseVersion('1.6.1') else False
+            xtc_trr_random_accessible = True if LooseVersion(mdtraj.__version__) >= LooseVersion('1.6.1') else False
             self._is_random_accessible &= xtc_trr_random_accessible
 
         self._ra_cuboid = FeatureReaderCuboidRandomAccessStrategy(self, 3)
