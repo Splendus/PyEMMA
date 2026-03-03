@@ -342,7 +342,7 @@ def get_config_from_root(root):
     # parser = configparser.SafeConfigParser()  # (Slendus) seems to be removed in py312
     parser = configparser.ConfigParser()
     with open(setup_cfg, "r") as f:
-        parser.readfp(f)
+        parser.read(f)
     VCS = parser.get("versioneer", "VCS")  # mandatory
 
     def get(parser, name):
